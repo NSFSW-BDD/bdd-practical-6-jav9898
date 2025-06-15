@@ -98,7 +98,7 @@ var jwtMiddleware = {
         // Verify the token
         jwt.verify(token, process.env.JWT_SECRET_KEY, callback);
     },
-    verifyAdminRole: (req, res, next) => {
+    verifyAdmin: (req, res, next) => {
 
         if(res.locals.role=="admin"){
             next();

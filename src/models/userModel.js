@@ -27,11 +27,20 @@ var userModel={
         const query = 'delete from user where userid=?';
         pool.query(query, [data.userid], callback);
     },
-    login: (data,callback) => {
+    loginUser: (data,callback) => {
         const query = 'SELECT * FROM user where email=? and password=?';
         pool.query(query, [data.email,data.password], callback);
     },
 
+    findUserByUsername: (data, callback) => {
+        const query = 'SELECT * FROM user WHERE username=?';
+        pool.query(query, [data.username], callback);
+    },
+    
+    checkUsernameOrEmail: (data, callback) => {
+        const query = 'SELECT * FROM user WHERE username=? OR email=?';
+        pool.query(query, [data.username, data.email], callback);
+    }
 
 }
 
